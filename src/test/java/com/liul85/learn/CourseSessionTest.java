@@ -3,9 +3,9 @@ package com.liul85.learn;
 import com.liu85.learn.CourseSession;
 import com.liu85.learn.Student;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
+
+import static com.liul85.learn.DateUtil.createDate;
 
 /**
  * Created by twcn on 3/4/16.
@@ -14,15 +14,6 @@ public class CourseSessionTest extends junit.framework.TestCase {
 
     private CourseSession session;
     private Date startDate;
-
-    private Date createDate(int year, int month, int day) {
-        GregorianCalendar calendar = new GregorianCalendar();
-        calendar.clear();
-        calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONTH, month -1);
-        calendar.set(Calendar.DAY_OF_MONTH, day);
-        return calendar.getTime();
-    }
 
     @Override
     public void setUp() throws Exception {
@@ -55,4 +46,6 @@ public class CourseSessionTest extends junit.framework.TestCase {
         Date sixteenWeekOut = createDate(2003, 4, 25);
         assertEquals(sixteenWeekOut, session.getEndDate());
     }
+
+
 }

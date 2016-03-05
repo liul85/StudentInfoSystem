@@ -9,6 +9,7 @@ import java.util.GregorianCalendar;
  * Created by twcn on 3/4/16.
  */
 public class CourseSession {
+
     private Date startDate;
     private String department;
     private String number;
@@ -51,4 +52,9 @@ public class CourseSession {
         calendar.add(Calendar.DAY_OF_YEAR, numberOfDay);
         return calendar.getTime();
     }
+
+    ArrayList<Student> getAllStudents() {
+        return allStudents;
+    }
+
 }
