@@ -8,8 +8,10 @@ import java.util.GregorianCalendar;
  * Created by twcn on 3/5/16.
  */
 public class DateUtil {
+    private DateUtil() {
+    }
 
-    static Date createDate(int year, int month, int day) {
+    protected static Date createDate(int year, int month, int day) {
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.clear();
         calendar.set(Calendar.YEAR, year);

@@ -13,4 +13,35 @@ public class StudentTest extends junit.framework.TestCase {
 
         assertEquals(name, studentName);
     }
+
+    public void testFullTime() throws Exception {
+        Student student = new Student("a");
+        assertFalse(student.isFullTime());
+    }
+
+    public void testCredits() throws Exception {
+        Student student = new Student("b");
+        assertEquals(0, student.getCredits());
+
+        student.addCredits(3);
+        assertEquals(3, student.getCredits());
+
+        student.addCredits(4);
+        assertEquals(7, student.getCredits());
+
+        student.addCredits(5);
+        assertEquals(12, student.getCredits());
+        assertTrue(student.isFullTime());
+    }
+
+    public void testInState() throws Exception {
+        Student student = new Student("a");
+        assertFalse(student.isInState());
+
+        student.setState(Student.IN_STATE);
+        assertTrue(student.isInState());
+
+        student.setState("MD");
+        assertFalse(student.isInState());
+    }
 }

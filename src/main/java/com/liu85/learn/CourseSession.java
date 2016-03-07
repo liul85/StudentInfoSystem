@@ -10,15 +10,30 @@ import java.util.GregorianCalendar;
  */
 public class CourseSession {
 
+    private static int count;
     private Date startDate;
     private String department;
     private String number;
     private ArrayList<Student> allStudents = new ArrayList<Student>();
+    private int numberOfCredits;
 
-    public CourseSession(String department, String number, Date startDate) {
+    private CourseSession(String department, String number, Date startDate) {
         this.department = department;
         this.number = number;
         this.startDate = startDate;
+    }
+
+    private static void incrementCount() {
+        count += 1;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static CourseSession create(String department, String number, Date startDate) {
+        incrementCount();
+        return new CourseSession(department, number, startDate);
     }
 
     public String getSessionDepartment() {
@@ -35,6 +50,7 @@ public class CourseSession {
 
     public void enroll(Student student) {
         allStudents.add(student);
+        student.addCredits(numberOfCredits);
     }
 
     public Student getStudent(int i) {
@@ -57,4 +73,11 @@ public class CourseSession {
         return allStudents;
     }
 
+    public static void resetCount() {
+        count = 0;
+    }
+
+    public void setNumberOfCredits(int numberOfCredits) {
+        this.numberOfCredits = numberOfCredits;
+    }
 }
