@@ -8,7 +8,7 @@ import java.util.GregorianCalendar;
 /**
  * Created by twcn on 3/4/16.
  */
-public class CourseSession {
+public class CourseSession implements Comparable<CourseSession> {
 
     private static int count;
     private Date startDate;
@@ -79,5 +79,15 @@ public class CourseSession {
 
     public void setNumberOfCredits(int numberOfCredits) {
         this.numberOfCredits = numberOfCredits;
+    }
+
+    @Override
+    public int compareTo(CourseSession o) {
+        int compare = this.getSessionDepartment().compareTo(o.getSessionDepartment());
+        if (compare == 0) {
+            compare = this.getSessionNumber().compareTo(o.getSessionNumber());
+        }
+
+        return compare;
     }
 }
